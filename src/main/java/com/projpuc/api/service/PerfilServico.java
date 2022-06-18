@@ -4,7 +4,6 @@ import com.projpuc.api.model.Perfil;
 import com.projpuc.api.repository.PerfilRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
