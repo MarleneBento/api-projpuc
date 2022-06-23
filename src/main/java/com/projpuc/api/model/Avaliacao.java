@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,19 +13,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "material")
-public class Material implements Serializable {
-    /* Cadastro dos materiais para execução dos serviços */
-    private static final long serialVersionUID = 1L;
-
-
+@Table(name = "avaliacao")
+public class Avaliacao implements Serializable {
+    /* Cadastro de avaliação do atendimento  - exemplo: nota de 1 a 10*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String descricao;
-    private String marca;
-    private String quantidade;
-    private String custo;
-
+    private String comentario;
+    private String nota;
 
 }

@@ -7,28 +7,27 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
-
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "atendimento")
-public class Atendimento implements Serializable {
-    /* Cadastro do atendimento ao cliente */
+@Entity
+@Table (name = "agenda")
+public class Agenda  implements Serializable {
+    /* Agenda dos serviços oferecidos, quando cliente nulo o horário está disponível */
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
+    private String dateHora;
+    @ManyToOne
+    private Servico servico;
+    @ManyToOne
+    private Cliente cliente;
+    private boolean compareceu;
 
-    private String item;
-    private String datahora;
-    private String historico;
-    private Boolean resgatePonto;
-    @ManyToOne
-    private Agenda agenda;
-    @ManyToOne
-    private Pagamento pagamento;
+
 
 }

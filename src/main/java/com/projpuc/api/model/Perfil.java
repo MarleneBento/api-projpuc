@@ -18,6 +18,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Table(name = "perfil" )
 public class Perfil implements Serializable {
+    /* Cadastro do usuário que poderá ser o administrador ou cliente */
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,7 @@ public class Perfil implements Serializable {
     private String senha ;
     private String sexo;
     private String email;
+
     private String telefone;
     private String nascimento;
     private String perfil;
