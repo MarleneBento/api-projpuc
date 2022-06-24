@@ -8,27 +8,24 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "atendimento")
-public class Atendimento implements Serializable {
-    /* Cadastro do atendimento ao cliente */
+@Entity
+@Table(name = "servico")
+
+public class Servico implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String item;
-    private String datahora;
-    private String historico;
-    private Boolean resgatePonto;
-    @ManyToOne
-    private Agenda agenda;
-    @ManyToOne
-    private Pagamento pagamento;
-
+    @Column(name = "nome",length = 255,nullable = true)
+    private String nome;
+    @Column(name = "descricao",length = 255)
+    private String descricao;
+    private double valor;
+    private int pontos;
+    private String tempoServico;
+    private String fotoModelo;
 }
