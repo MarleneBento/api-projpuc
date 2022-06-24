@@ -26,7 +26,7 @@ public class Atendimento implements Serializable {
     private String datahora;
     private String historico;
     private Boolean resgatePonto;
-    @ManyToOne
+    @OneToOne
     private Agenda agenda;
     @ManyToOne
     private Pagamento pagamento;
