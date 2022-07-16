@@ -1,7 +1,7 @@
 package com.projpuc.api.service;
 
-import com.projpuc.api.model.Perfil;
-import com.projpuc.api.repository.PerfilRepositorio;
+import com.projpuc.api.model.Marca;
+import com.projpuc.api.repository.MarcaRepositorio;
 import com.projpuc.api.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,23 +10,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PerfilServico {
-    @Autowired
-    private PerfilRepositorio repositorio;
+public class MarcaServico {
 
-    public List<Perfil> listaTodosPerfis() {
+    @Autowired
+    private MarcaRepositorio repositorio;
+
+    public List<Marca> listaTodasMarcas() {
         return repositorio.findAll();
     }
 
-    public Perfil buscarPorId(Long id) {
-        Optional<Perfil> obj = repositorio.findById(id);
+    public Marca buscarPorId(Long id) {
+        Optional<Marca> obj = repositorio.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
-    public Perfil atualizar(Long id, Perfil obj) {
+    public Marca atualizar(Long id, Marca obj) {
         try {
-            Perfil entity = repositorio.getOne(id);
+            Marca entity = repositorio.getOne(id);
             updateData(entity, obj);
             return repositorio.save(entity);
         } catch (EntityNotFoundException e) {
@@ -34,13 +35,11 @@ public class PerfilServico {
         }
     }
 
-    public Perfil inserir(Perfil obj) {
+    public Marca inserir(Marca obj) {
         return repositorio.save(obj);
     }
 
-    private void updateData(Perfil entity, Perfil obj) {
-        entity.setNome(obj.getNome());
-        entity.setEmail(obj.getEmail());
-        entity.setTelefone(obj.getTelefone());
+    private void updateData(Marca entity, Marca obj) {
+        entity.setDescricao(obj.getDescricao());
     }
 }

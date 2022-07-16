@@ -16,15 +16,15 @@ import java.io.Serializable;
 public class Material implements Serializable {
     /* Cadastro dos materiais para execução dos serviços */
     private static final long serialVersionUID = 1L;
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @Column(name = "descricao",length = 255,nullable = true)
     private String descricao;
-    private String marca;
-    private String quantidade;
-    private String custo;
+    private Marca marca;
+    private Long quantidade;
+    private Double custo;
+    private Long estoque;
 
 
 }

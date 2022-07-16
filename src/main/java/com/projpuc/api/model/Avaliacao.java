@@ -19,7 +19,8 @@ public class Avaliacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+    @Column(name = "comentario",length = 255,nullable = false)
     private String comentario;
-    private String nota;
+    private int nota;
 
 }

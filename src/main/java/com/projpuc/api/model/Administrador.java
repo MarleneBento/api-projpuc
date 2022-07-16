@@ -17,4 +17,5 @@ public class Administrador extends Perfil{
 
     private int donoEstabelecimento;
 
+
 }

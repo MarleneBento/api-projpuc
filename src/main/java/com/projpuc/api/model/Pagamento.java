@@ -21,5 +21,6 @@ public class Pagamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "descricao",length = 30,nullable = true)
     private String descricao;
 }

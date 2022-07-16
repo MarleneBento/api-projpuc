@@ -1,7 +1,7 @@
 package com.projpuc.api.service;
 
-import com.projpuc.api.model.Perfil;
-import com.projpuc.api.repository.PerfilRepositorio;
+import com.projpuc.api.model.Servico;
+import com.projpuc.api.repository.ServicoRepositorio;
 import com.projpuc.api.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,23 +10,23 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PerfilServico {
+public class ServicoServico {
     @Autowired
-    private PerfilRepositorio repositorio;
+    private ServicoRepositorio repositorio;
 
-    public List<Perfil> listaTodosPerfis() {
+    public List<Servico> listaTodosServicos() {
         return repositorio.findAll();
     }
 
-    public Perfil buscarPorId(Long id) {
-        Optional<Perfil> obj = repositorio.findById(id);
+    public Servico buscarPorId(Long id) {
+        Optional<Servico> obj = repositorio.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
-    public Perfil atualizar(Long id, Perfil obj) {
+    public Servico atualizar(Long id, Servico obj) {
         try {
-            Perfil entity = repositorio.getOne(id);
+            Servico entity = repositorio.getOne(id);
             updateData(entity, obj);
             return repositorio.save(entity);
         } catch (EntityNotFoundException e) {
@@ -34,13 +34,17 @@ public class PerfilServico {
         }
     }
 
-    public Perfil inserir(Perfil obj) {
+    public Servico inserir(Servico obj) {
         return repositorio.save(obj);
     }
 
-    private void updateData(Perfil entity, Perfil obj) {
+    private void updateData(Servico entity, Servico obj) {
         entity.setNome(obj.getNome());
-        entity.setEmail(obj.getEmail());
-        entity.setTelefone(obj.getTelefone());
+        entity.setDescricao(obj.getDescricao());
+        entity.setValor(obj.getValor());
+        entity.setPontos(obj.getPontos());
+        entity.setTempoServico(obj.getTempoServico());
+        entity.setFotoModelo(obj.getFotoModelo());
     }
+
 }
