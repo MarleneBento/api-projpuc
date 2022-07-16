@@ -22,15 +22,12 @@ public class Estabelecimento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    @OneToOne
-    private  Administrador administrador;
     @Column(name = "nome",length = 255,nullable = true)
     private String nome;
     @Column(name = "informacoes",length = 255,nullable = true)
     private String informacoes;
     @Column(name = "localizacao",length = 255,nullable = true)
     private String localizacao;
-
 
 
 }
