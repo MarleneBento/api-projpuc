@@ -1,7 +1,7 @@
 package com.projpuc.api.controller;
 
-import com.projpuc.api.model.Perfil;
-import com.projpuc.api.service.PerfilServico;
+import com.projpuc.api.model.Pagamento;
+import com.projpuc.api.service.PagamentoServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,22 +10,25 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/perfil")
-public class PerfilControlador {
+@RequestMapping(value = "/pagamento")
+public class PagamentoControlador {
+
     @Autowired
-    private PerfilServico perfilServico;
+    private PagamentoServico pagamentoServico;
 
     @GetMapping
-    public ResponseEntity<List<Perfil>> buscarTodos() {
-        List<Perfil> list = perfilServico.listaTodosPerfis();
+    public ResponseEntity<List<Pagamento>> buscarTodos() {
+        List<Pagamento> list = pagamentoServico.listaTodosPagamentos();
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
-    public ResponseEntity<Perfil> inserirPerfil(@RequestBody Perfil obj) {
-        obj = perfilServico.inserir(obj);
+    public ResponseEntity<Pagamento> inserirPagamento(@RequestBody Pagamento obj) {
+        obj = pagamentoServico.inserir(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
-                .buildAndExpand(obj.getId()).toUri();
+                .buildAndExpand(obj.
+                        getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
+
 }

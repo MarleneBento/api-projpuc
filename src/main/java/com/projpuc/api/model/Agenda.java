@@ -22,11 +22,12 @@ public class Agenda  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String dateHora;
-    @ManyToOne
+    @OneToOne
     private Servico servico;
-    @ManyToOne
+    @OneToOne
     private Cliente cliente;
-    private boolean compareceu;
+    @Column(name = "compareceu",length = 1)
+    private String compareceu;
 
 
 

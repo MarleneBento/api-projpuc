@@ -21,14 +21,14 @@ public class Atendimento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String item;
     private String datahora;
+    @Column(name = "historico",length = 255)
     private String historico;
-    private Boolean resgatePonto;
+    @Column(name = "resgatePonto",length = 1)
+    private String resgatePonto;
     @OneToOne
     private Agenda agenda;
-    @ManyToOne
+    @OneToOne
     private Pagamento pagamento;
 
 }

@@ -25,6 +25,6 @@ public class FluxoCaixa implements Serializable {
     private Long Id;
     private String tipo;
     private String data;
-    private String valor;
+    private double valor;
 
 }
